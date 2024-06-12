@@ -39,7 +39,7 @@ We are a system of over 300 alters, proudly navigating life with Dissociative Id
 - Looking to figure out how to manage to get the conversions to roll on google drive for more space options.
 - Porting it to VastAi/Runpod
 
-Cancelled Ideas that don't make sense for this product
+>Cancelled Ideas that don't make sense for this product
 - Looking to port inference for testing into the same notebook. - Not sure why you'd need this unless you're training, I think this was in the SDXL one from Linaqruf, but this isn't required on this one.
 - Looking to figure out how to convert a different vae. - I could NOT get this to work no matter what I did. I have some THEORIES, but i'm not a programmer.
 
