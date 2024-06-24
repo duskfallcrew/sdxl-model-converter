@@ -1,5 +1,7 @@
 # sdxl-model-converter
-To convert sdxl checkpoint to diffusers, need kohya-ss/sd-scripts as a core to make it work.
+Using Linaqruf's base code, and Kohya-SS base scripts this google colab is for converting your SDXL base architecture checkpoints to Diffusers format. 
+
+As of June 24 - the Notebook was found to be in PRIVATE mode, this is fixed.  If you still can't access, please open an issue in this github repostiory. I will not be accepting "EDITOR" requests on my base notebook, if you're interested in contributing - fork the project or download the notebook yourself.  This isn't personal, just that in case of vandalism, access issues and otherwise, only view access is enabled at the moment.  However, you CAN download the notebook via this github without needing to link to it.
 
 
 | Link Name| Description | Link |
