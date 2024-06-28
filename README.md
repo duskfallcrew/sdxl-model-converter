@@ -4,27 +4,8 @@ Using Linaqruf's base code, and Kohya-SS base scripts this google colab is for c
 As of June 24 - the Notebook was found to be in PRIVATE mode, this is fixed.  If you still can't access, please open an issue in this github repostiory. I will not be accepting "EDITOR" requests on my base notebook, if you're interested in contributing - fork the project or download the notebook yourself.  This isn't personal, just that in case of vandalism, access issues and otherwise, only view access is enabled at the moment.  However, you CAN download the notebook via this github without needing to link to it.
 
 
-As of June 27th this is NOT likely working on Colab, there is a weird error seen here:
-```
-convert_sdxl_to_diffusers.py not found, downloading...
-Traceback (most recent call last):
-  File "/content/convert_sdxl_to_diffusers.py", line 4, in <module>
-    from diffusers import StableDiffusionXLPipeline
-  File "/usr/local/lib/python3.10/dist-packages/diffusers/__init__.py", line 38, in <module>
-    from .models import (
-  File "/usr/local/lib/python3.10/dist-packages/diffusers/models/__init__.py", line 33, in <module>
-    from .controlnet_flax import FlaxControlNetModel
-  File "/usr/local/lib/python3.10/dist-packages/diffusers/models/controlnet_flax.py", line 25, in <module>
-    from .modeling_flax_utils import FlaxModelMixin
-  File "/usr/local/lib/python3.10/dist-packages/diffusers/models/modeling_flax_utils.py", line 45, in <module>
-    class FlaxModelMixin:
-  File "/usr/local/lib/python3.10/dist-packages/diffusers/models/modeling_flax_utils.py", line 194, in FlaxModelMixin
-    def init_weights(self, rng: jax.random.KeyArray) -> Dict:
-  File "/usr/local/lib/python3.10/dist-packages/jax/_src/deprecations.py", line 54, in getattr
-    raise AttributeError(f"module {module!r} has no attribute {name!r}")
-AttributeError: module 'jax.random' has no attribute 'KeyArray'
-```
-
+June 29th Changelog:
+TPUv2 runtime on colab, but largely beyond that am no longer providing a ton of support for google colab, largely beacuse Free/low tier Paid users have more struggles and in order to FIX said struggles i'll need to re-sub and I refuse based on how bad Colab is.  THIS should work on AWS or other places, as it's not tied to your google drive.
 
 | Link Name| Description | Link |
 | --- | --- | --- |
