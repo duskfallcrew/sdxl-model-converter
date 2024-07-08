@@ -13,6 +13,7 @@ from diffusers.pipelines.stable_diffusion.convert_from_ckpt import (
     renew_vae_resnet_paths,
 )
 import safetensors
+import json
 
 def custom_convert_ldm_vae_checkpoint(checkpoint, config):
     vae_state_dict = checkpoint
@@ -118,16 +119,13 @@ def custom_convert_ldm_vae_checkpoint(checkpoint, config):
 def vae_pt_to_vae_diffuser(
     checkpoint_path: str,
     output_path: str,
+    config_json: str,
 ):
-    # Only support V1
-    r = requests.get(
-        "https://raw.githubusercontent.com/CompVis/stable-diffusion/main/configs/stable-diffusion/v1-inference.yaml"
-    )
-    io_obj = io.BytesIO(r.content)
+    # Load the config JSON
+    with open(config_json, "r") as f:
+        vae_config = json.load(f)
 
-    original_config = yaml.safe_load(io_obj)
-    image_size = 512
-    device = "cuda" if torch.cuda.is_available() else "cpu"
+    # Load the checkpoint
     if checkpoint_path.endswith("safetensors"):
         from safetensors import safe_open
 
@@ -136,10 +134,9 @@ def vae_pt_to_vae_diffuser(
             for key in f.keys():
                 checkpoint[key] = f.get_tensor(key)
     else:
-        checkpoint = torch.load(checkpoint_path, map_location=device)["state_dict"]
+        checkpoint = torch.load(checkpoint_path, map_location="cpu")["state_dict"]
 
-    # Convert the VAE model.
-    vae_config = create_vae_diffusers_config(original_config, image_size=image_size)
+    # Convert the VAE model
     converted_vae_checkpoint = custom_convert_ldm_vae_checkpoint(checkpoint, vae_config)
 
     vae = AutoencoderKL(**vae_config)
@@ -152,13 +149,13 @@ def vae_pt_to_vae_diffuser(
 
     print(f"Model converted to SafeTensors format and saved to {output_path}")
 
-
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
 
     parser.add_argument("--vae_pt_path", default=None, type=str, required=True, help="Path to the VAE.pt to convert.")
     parser.add_argument("--dump_path", default=None, type=str, required=True, help="Path to the VAE.pt to convert.")
+    parser.add_argument("--config_json", default=None, type=str, required=True, help="Path to the config JSON file.")
 
     args = parser.parse_args()
 
-    vae_pt_to_vae_diffuser(args.vae_pt_path, args.dump_path)
+    vae_pt_to_vae_diffuser(args.vae_pt_path, args.dump_path, args.config_json)
