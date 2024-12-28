@@ -2,6 +2,8 @@
 
 **⚠️ IMPORTANT: Google Colab Support Ended & AUP Warning ⚠️**
 
+COLAB USERS: https://github.com/duskfallcrew/SDXL_COLAB_DIFFUSERS_CONVERT
+
 Effective December 2024, this repository's Google Colab notebooks for SD 1.5 and SDXL model conversion are **no longer actively supported or maintained.** Due to persistent and unresolvable issues with Google Colab's Acceptable Use Policy (AUP), which disproportionately affects Stable Diffusion-related tools, we can no longer guarantee the functionality or stability of these notebooks on the Colab platform. For a comprehensive explanation of these issues, please refer to my article on Civitai: [https://civitai.com/articles/10080](https://civitai.com/articles/10080)
 
 **Key Changes:** The Colab-based notebooks for converting both SD 1.5 and SDXL models to `diffusers` format have been **removed** from this repository. However, the **Jupyter (non-Colab) notebook and the classic Python script versions remain available** for local execution.
